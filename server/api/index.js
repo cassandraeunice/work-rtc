@@ -33,7 +33,7 @@ try {
 
   // Start the WebSocket Server
   // const wss = new WebSocketServer({ server: server });
-  const wss = new WebSocketServer({ port: process.env.PORT || 8443 });
+  const wss = new WebSocketServer({ port: Number(process.env.PORT) });
 
   // Handle meeting id requests
   wss.on("connection", (ws) => {

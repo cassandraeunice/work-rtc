@@ -43,7 +43,7 @@ const Meeting = () => {
       }
 
       serverConnection.current = new WebSocket(
-        `wss://${domain}:8443`
+        `wss://${domain}:8`
       );
       serverConnection.current.onmessage = gotMessageFromServer;
 
