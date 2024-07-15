@@ -153,7 +153,7 @@ const Meeting = () => {
 
   function muteMic() {
     localStream.getAudioTracks()[0].enabled =
-      !myStream.getAudioTracks()[0].enabled;
+      !localStream.getAudioTracks()[0].enabled;
   }
 
   function muteCam() {
