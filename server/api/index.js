@@ -9,8 +9,8 @@ const path = require("path");
 const HTTPS_PORT = 8443;
 
 const serverConfig = {
-  key: fs.readFileSync("key.pem"),
-  cert: fs.readFileSync("cert.pem"),
+  key: fs.readFileSync("../key.pem"),
+  cert: fs.readFileSync("../cert.pem"),
 };
 
 // Create an instance of express
