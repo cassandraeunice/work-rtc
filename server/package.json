@@ -9,7 +9,7 @@
     "ws": "^8.18.0"
   },
   "scripts": {
-    "start": "node ./api/server.js",
-    "dev": "nodemon ./api/server.js"
+    "start": "node ./api/index.js",
+    "dev": "nodemon ./api/index.js"
   }
 }
