@@ -36,14 +36,14 @@ const Meeting = () => {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
-
+      const domain = 'server-production-cbb8.up.railway.app';
       localStream.current = stream;
       if (localVideoRef.current) {
         localVideoRef.current.srcObject = stream;
       }
 
       serverConnection.current = new WebSocket(
-        `wss://${window.location.hostname}:8443`
+        `wss://${domain}:8443`
       );
       serverConnection.current.onmessage = gotMessageFromServer;
 
