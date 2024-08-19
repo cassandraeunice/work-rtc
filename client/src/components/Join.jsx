@@ -6,7 +6,7 @@ export default function Join() {
 
   return (
     <>
-      <h1>TalkTherapy Teleconferencing</h1>
+      <h1>iKalinga Teleconferencing</h1>
       <h3>Enter room id you want to join:</h3>
       <form>
         <input

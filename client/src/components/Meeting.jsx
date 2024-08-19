@@ -31,20 +31,19 @@ const Meeting = () => {
   async function pageReady() {
     const constraints = {
       video: true,
-      audio: false,
+      audio: true, // make sure audio is true
     };
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      const domain = 'server-production-cbb8.up.railway.app';
       localStream.current = stream;
       if (localVideoRef.current) {
         localVideoRef.current.srcObject = stream;
       }
 
-      serverConnection.current = new WebSocket(
-        `wss://${domain}`
-      );
+      // Proceed with the rest of the logic
+      const domain = "localhost:8443"; // ensure this points to your WebSocket server
+      serverConnection.current = new WebSocket(`wss://${domain}`);
       serverConnection.current.onmessage = gotMessageFromServer;
 
       start(true);
@@ -152,13 +151,17 @@ const Meeting = () => {
   }
 
   function muteMic() {
-    localStream.getAudioTracks()[0].enabled =
-      !localStream.getAudioTracks()[0].enabled;
+    const audioTracks = localStream.current.getAudioTracks();
+    if (audioTracks.length > 0) {
+      audioTracks[0].enabled = !audioTracks[0].enabled;
+    }
   }
 
   function muteCam() {
-    localStream.current.getVideoTracks()[0].enabled =
-      !localStream.current.getVideoTracks()[0].enabled;
+    const videoTracks = localStream.current.getVideoTracks();
+    if (videoTracks.length > 0) {
+      videoTracks[0].enabled = !videoTracks[0].enabled;
+    }
   }
 
   return (
